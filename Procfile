@@ -1,1 +1,1 @@
-web:python quiz.py
+web:gunicorn quiz:quiz
