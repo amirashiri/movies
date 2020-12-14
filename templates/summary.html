@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title%}Movie Quiz{% endblock %}
+
+{% block content %}
+
+<div class="container pt-3">
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h2 class="text-center" style="color:white;">T-H-E &nbsp&nbsp M-O-V-I-E &nbsp&nbsp Q-U-I-Z</h2>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h1 class="text-center" style="color:white;">GAME OVER</h1>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h6 class="text-center" style="color:white;">&nbsp</h6>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h4 class="text-center" style="color:white;">Thank you for playing quiz no. {{ level }} !</h4>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h5 class="text-center" style="color:white;">&nbsp</h5>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h4 class="text-center" style="color:white;">{{ player_score_info }}</h4>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h4 class="text-center" style="color:white;">&nbsp</h4>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h4 class="text-center" style="color:white;">{{ all_players_scores_info }}</h4>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h3 class="text-center" style="color:white;">&nbsp</h3>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-3" align="center">
+        <h1 class="text-center" style="color:white;">&nbsp</h1>
+    </div>
+    <div class="col-9">
+        <a class="button" href="{{ url_for( 'home' ) }}">
+            <span>Play Again</span>
+        </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+

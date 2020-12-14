@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title%}Movie Quiz{% endblock %}
+
+{% block content %}
+
+<div class="container pt-3">
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h2 class="text-center" style="color:white;">T-H-E &nbsp&nbsp M-O-V-I-E &nbsp&nbsp Q-U-I-Z</h2>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h1 class="text-center" style="color:white;">&nbsp</h1>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-6" align="center">
+        <h3 class="text-center" style="color:white;">Welcome! your player number is:</h3>
+    </div>
+    <div class="col-6" align="center">
+        <input type="text" name="player" value={{ player }} disabled="disabled" />
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h1 class="text-center" style="color:white;">&nbsp</h1>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        </pre><h4 class="text-" style="color:white;">The game will start soon...</h4>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+        setInterval(fetchFromServer, 1000);
+    });
+
+    function fetchFromServer() {
+        window.location.href = "{{url_for('wait_for_game_start', game_code=game_code, player=player)}}"
+    }
+  </script>
+
+{% endblock javascripts %}

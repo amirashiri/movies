@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title%}Movie Quiz{% endblock %}
+
+{% block content %}
+
+<div class="container pt-3">
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <pre><h2 class="text-left" style="color:white;">            T-H-E &nbsp&nbsp M-O-V-I-E &nbsp&nbsp Q-U-I-Z</h2></pre>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-2" align="center">
+        <h1 class="text-center" style="color:white;">&nbsp</h1>
+    </div>
+    <div class="col-xs-8 col-sm-6 padding-zero embed-responsive embed-responsive-16by9">
+        <video id="video1" align="center" autoplay controls>
+            <source src="{{ url_for('static', filename=video_source) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="col-2" align="center">
+        <h1 class="text-center" style="color:white;">&nbsp</h1>
+    </div>
+  </div>
+  <div class="row pt-2">
+      <div class="col-10">
+          <div class="row pt-3">
+            <div class="col-12">
+                <div id="pagegradient"></div>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-1" align="center">
+                <h1 class="text-center" style="color:white;">&nbsp</h1>
+            </div>
+            <div class="col-sm-4">
+                <a class="button" href="{{ url_for( 'get_answer', game_code=game_code, player=player, answer=1) }}">
+                    <span>Select</span>
+                </a>
+            </div>
+            <div class="col-sm-5">
+                <a class="button" href="{{ url_for( 'get_answer', game_code=game_code, player=player, answer=2) }}" style="left: 260px;">
+                    <span>Select</span>
+                </a>
+            </div>
+            <div class="col-1" align="center">
+                <h1 class="text-center" style="color:white;">&nbsp</h1>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-2">
+
+        <div class="row pt-3">
+            <div class="col-12" style="height:50px"></div>
+        </div>
+         <div class="row">
+            <div class="col-12">
+                {% include 'countdown.html' %}
+            </div>
+          </div>
+        <div class="row pt-3">
+            <div class="col-12" style="height:50px"></div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-12" style="height:50px">
+                <h6 class="text-center" style="color:white;">{{ question_info }}</h6>
+            </div>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+        //setTimeout(countdown, {{ 0 }});
+        countdown({{ question_delay-1 }});
+
+        setTimeout(nextQuestion, {{ question_delay*1000 }});
+    });
+
+    function nextQuestion() {
+        window.location.href = "{{url_for('get_answer', game_code=game_code, player=player, answer=0)}}"
+    }
+  </script>
+
+{% endblock javascripts %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title%}Movie Quiz{% endblock %}
+
+{% block content %}
+
+<div class="container pt-3">
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h2 class="text-center" style="color:white;">T-H-E &nbsp&nbsp M-O-V-I-E &nbsp&nbsp Q-U-I-Z</h2>
+    </div>
+  </div>
+  <div class="row pt-3">
+      <div class="col-12" align="center">
+          <h4 class="text-center" style="color:white;">&nbsp</h4>
+      </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-12" align="center">
+        <h3 class="text-center" style="color:white;">{{ message }}</h3>
+    </div>
+  </div>
+  <div class="row pt-3">
+      <div class="col-12" align="center">
+          <h6 class="text-center">&nbsp</h6>
+      </div>
+  </div>
+  <div class="row pt-3">
+      <div class="col-12">
+          <pre><h4 class="text-left" style="color:white;">           select a quiz number:</h4></pre>
+      </div>
+  </div>
+  <div class="row pt-1">
+      <div class="col-2" align="center">
+          <h3 class="text-center" style="color:white;">&nbsp</h3>
+      </div>
+      <div class="col-1" align="right">
+          <input type="range" id="rangeInput" name="rangeInput" min="1" max="2" value="1"
+                 oninput="level.value=rangeInput.value">
+      </div>
+      <div class="col-2" align="center">
+          <input id="level" type="level" disabled value="1" min="1" max="2" oninput="rangeInput.value=level.value" />
+      </div>
+      <div class="col-7" align="center">
+          <h3 class="text-center" style="color:white;">&nbsp</h3>
+      </div>
+  </div>
+  <div class="row pt-1">
+      <div class="col-5">
+            <a id="create" class="button">
+                <span>Create Game</span>
+            </a>
+      </div>
+      <div class="col-5">
+          <a class="button" href="{{ url_for( 'join_game' ) }}" style="left: 260px;">
+              <span>Join Game</span>
+          </a>
+      </div>
+      <div class="col-2" align="center">
+            <h1 class="text-center" style="color:white;">&nbsp</h1>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+  <script>
+    document.getElementById('level').style.width="50px";
+    document.getElementById('level').style.height="20px";
+    $(document).ready(function() {
+        $( "#create" ).click(function() {
+            window.location.href =  "{{ url_for( 'create_game', level=0) }}".replace("0", $( "#level" ).val())
+        });
+    });
+  </script>
+
+{% endblock javascripts %}

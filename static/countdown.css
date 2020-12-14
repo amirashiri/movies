@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+body {
+	overflow: hidden;
+}
+
+#projectionScreen {
+	overflow:hidden;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 700;
+	visibility:hidden;
+	opacity:0;
+	position: absolute;
+	top:50%;
+	left:50%;
+	}

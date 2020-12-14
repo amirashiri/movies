@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title%}Movie Quiz - wait{% endblock %}
+
+{% block content %}
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-12">
+        <h2 class="text-center" style="color:white;">{{ response }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4" align="center">
+        <div class="row">
+            <div class="col-12" align="center">
+                <h3 class="text-center" style="color:white;">{{ player_success_info }}</h3>
+            </div>
+            <div class="col-4" align="center">
+                <h6 class="text-center" style="color:white;">&nbsp</h6>
+            </div>
+            <div class="col-12" align="center">
+                <h2 class="text-center" style="color:white;">THE ANSWER IS --></h2>
+            </div>
+            <div class="col-4" align="center">
+                <h1 class="text-center" style="color:white;">&nbsp</h1>
+            </div>
+            <div class="col-12" align="center">
+                <h4 class="text-center" style="color:white;">{{ all_players_success_info }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src = "{{ url_for('static', filename=poster_source) }}" width = "400"" align = "center"></img>
+    </div>
+    <div class="col-4" align="center">
+        <h1 class="text-center" style="color:white;">&nbsp</h1>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+        setTimeout(nextQuestion, {{ answer_delay*1000 }});
+    });
+
+    function nextQuestion() {
+        window.location.href = "{{url_for('show_question', game_code=game_code, player=player)}}"
+    }
+  </script>
+
+{% endblock javascripts %}
